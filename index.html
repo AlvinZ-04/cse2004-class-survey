@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Survey</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #222;
+      background: white;
+    }
+
+    .chart {
+      position: relative;
+      height: 350px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class Survey</h1>
+  <p>What year are students in our class?</p>
+
+  <div class="chart">
+    <canvas id="yearChart" role="img" aria-label="Class year survey: 0 freshmen, 11 sophomores, 21 juniors, 19 seniors, and 2 graduate students.">
+      Freshman: 0. Sophomore: 11. Junior: 21. Senior: 19. Graduate Student: 2.
+    </canvas>
+  </div>
+
+  <p>Juniors are the largest group, followed by seniors. There were 53 responses in total.</p>
+  <p>Data from the CSE 2004 orientation quiz.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <script>
+    const chart = document.querySelector('#yearChart');
+
+    new Chart(chart, {
+      type: 'bar',
+      data: {
+        labels: ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate Student'],
+        datasets: [{
+          label: 'Students',
+          data: [0, 11, 21, 19, 2],
+          backgroundColor: '#999',
+          borderColor: '#444',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 5
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
